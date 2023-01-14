@@ -3,9 +3,9 @@ import { Cliente } from "../components/Cliente";
 import { obtenerCliente } from "../data/clientes";
 
 export const loader = () => {
-  obtenerCliente()
+  const clientes = obtenerCliente()
 
-  return {}
+  return clientes
 }
 
 export const Index = () => {
