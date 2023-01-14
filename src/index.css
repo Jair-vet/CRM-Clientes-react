@@ -8,7 +8,7 @@
 
 .formulario{
     @apply mt-2 block w-full p-3 bg-gray-200 
-    outline-none rounded-md focus:ring-2 ring-blue-700 ring-inset uppercase font-semibold
+    outline-none rounded-md focus:ring-2 ring-blue-700 ring-inset font-semibold
 }
 
 .formulario-label{
