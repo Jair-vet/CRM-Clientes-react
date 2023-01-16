@@ -32,7 +32,7 @@ export const agregarCliente = async (datos) => {
 }
 
 // Actualizar Cliente 
-export async function actualizarCliente(id, datos) {
+export const actualizarCliente = async (id, datos) => {
     try {
         const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
             method: 'PUT',
@@ -47,7 +47,7 @@ export async function actualizarCliente(id, datos) {
     }
 }
 
-export async function eliminarCliente(id) {
+export const eliminarCliente = async (id) => {
         try {
         const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
             method: 'DELETE'

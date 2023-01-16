@@ -1,13 +1,6 @@
 {
   "clientes": [
     {
-      "id": 1,
-      "nombre": "Juan",
-      "telefono": "102013313",
-      "email": "juan@juan.com",
-      "empresa": "Yarkast JS"
-    },
-    {
       "id": 2,
       "nombre": "Karen",
       "telefono": "138198313",
@@ -30,11 +23,12 @@
       "id": 4
     },
     {
-      "id": 5,
-      "nombre": "Pedro",
-      "telefono": "1398198938",
+      "nombre": "Pedro Marquitos",
+      "empresa": "Benchmark",
       "email": "pedro@juan.com",
-      "empresa": "Benchmark"
+      "telefono": "1398198938",
+      "notas": "No come",
+      "id": 5
     },
     {
       "nombre": "Carlos Jair",
