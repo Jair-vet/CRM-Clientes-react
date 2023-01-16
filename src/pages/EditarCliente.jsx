@@ -1,7 +1,7 @@
-import { Form, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useActionData, useLoaderData, useNavigate } from "react-router-dom";
 import { Error } from "../components/Error";
 import { Formulario } from "../components/Formulario";
-import { obtenerClientes } from "../data/clientes";
+import { actualizarCliente, obtenerClientes } from "../data/clientes";
 
 
 export const loader = async ({params}) => {
@@ -16,10 +16,40 @@ export const loader = async ({params}) => {
     return cliente
 }
 
+export  async function action({request, params}) {
+  
+    const formData = await request.formData()
+    const datos = Object.fromEntries(formData)
+    const email = formData.get('email')
+
+    // Validación
+    const errores = []
+    if(Object.values(datos).includes('')) {
+        errores.push('Todos los campos son obligatorios')
+    }
+
+    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+    if(!regex.test(email)) {
+        errores.push('El Email no es válido')
+    }
+
+    // Retornar datos si hay errores
+    if(Object.keys(errores).length) {
+        return errores
+    }
+
+    // Actualizar el cliente
+    await actualizarCliente(params.clienteId, datos)
+    return redirect('/')
+  
+    // return { ok: true };
+  }
+
 export const EditarCliente = () => {
 
     const navigate = useNavigate()
     const cliente = useLoaderData()
+    const errores = useActionData()
 
   return (
     <>
@@ -39,9 +69,9 @@ export const EditarCliente = () => {
           method="post"
           noValidate
         >
-          {/* { errores?.length && errores.map( (error, i) => 
+          { errores?.length && errores.map( (error, i) => 
             <Error key={i}>{error}</Error>
-          ) } */}
+          ) }
           <Formulario
             cliente={ cliente }
           />
@@ -49,7 +79,7 @@ export const EditarCliente = () => {
           <input 
             type="submit"
             className="btn-submit"
-            value="Registrar Cliente"
+            value="Guardar Cliente"
           />
         </Form>
       </div>

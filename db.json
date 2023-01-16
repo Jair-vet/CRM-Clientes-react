@@ -22,11 +22,12 @@
       "empresa": "iTijuana"
     },
     {
-      "id": 4,
-      "nombre": "Miguel",
-      "telefono": "319381983",
+      "nombre": "Miguel Actualizado",
+      "empresa": "Agile Thought",
       "email": "miguel@juan.com",
-      "empresa": "Agile Thought"
+      "telefono": "319381983",
+      "notas": "Nueva Nota",
+      "id": 4
     },
     {
       "id": 5,
